@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.object-cover{
+    padding: 20px;
+}
+.image-carousel-div{
+    height: 400px;
+    width: 500px;
+}
+.service-card{
+    cursor: pointer;
+}
