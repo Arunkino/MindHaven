@@ -5,21 +5,20 @@ import axiosInstance from '../../utils/axiosConfig';
 export const fetchRecentChats = createAsyncThunk(
   'chat/fetchRecentChats',
   async (_, { getState }) => {
-    const response = await axiosInstance.get('/messages/');
+    console.log('fetching recent chats...');
+    const response = await axiosInstance.get('/messages/recent-chats');
     const currentUser = getState().user.currentUser;
-    return response.data.map(chat => ({
-      id: chat.id,
-      name: chat.sender_name === currentUser.first_name ? chat.receiver_name : chat.sender_name,
-      last_message: chat.last_message,
-      timestamp: chat.timestamp
-    }));
+    console.log('recent chats:', response.data);
+    return response.data;
   }
 );
 
 export const fetchOnlineUsers = createAsyncThunk(
   'chat/fetchOnlineUsers',
   async () => {
+    console.log('fetching online users...');
     const response = await axiosInstance.get('/messages/online-users/');
+    console.log('online users:', response.data);
     return response.data;
   }
 );
@@ -66,6 +65,14 @@ const chatSlice = createSlice({
           message.status = status;
         }
       },
+      resetChatState: (state) => {
+        state.recentChats = [];
+        state.onlineUsers = [];
+        state.currentChat = null;
+        state.messages = [];
+        state.status = 'idle';
+        state.error = null;
+      }
     },
   extraReducers: (builder) => {
     builder
@@ -82,6 +89,6 @@ const chatSlice = createSlice({
   },
 });
 
-export const { setCurrentChat, addMessage, setMessages, updateMessageStatus } = chatSlice.actions;
+export const { setCurrentChat, addMessage, setMessages, updateMessageStatus, resetChatState } = chatSlice.actions;
 
 export default chatSlice.reducer;

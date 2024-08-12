@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../utils/axiosConfig';
 
+
 export const refreshToken = createAsyncThunk(
   'user/refreshToken',
   async (_, { getState, rejectWithValue }) => {
@@ -24,7 +25,12 @@ export const logoutUser = createAsyncThunk(
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
+      // Dispatch the logout action from userSlice
       dispatch(logout());
+      // Dispatch the resetChatState action from chatSlice
+      // dispatch(resetChatState());
+
+      //not working as expected. simply giving directly from logout action
     }
   }
 );
@@ -62,9 +68,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(refreshToken.fulfilled, (state, action) => {
       state.accessToken = action.payload.access;
-    });
-    builder.addCase(logoutUser.fulfilled, (state) => {
-      // The logout action will be called in the logoutUser thunk
     });
   },
 });

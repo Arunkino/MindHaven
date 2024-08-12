@@ -7,6 +7,8 @@ import UpcomingSessions from '../components/user/UpcomingSessions';
 import SessionHistory from '../components/user/SessionHistory';
 import Chat from '../components/user/Chat';
 import ErrorBoundary from '../components/ErrorBoundary';
+import { resetChatState } from '../features/user/chatSlice';
+
 
 const UserDashboard = () => {
   const [activeSection, setActiveSection] = useState('profile');
@@ -18,6 +20,7 @@ const UserDashboard = () => {
     e.preventDefault();
     console.log("logout");
     dispatch(logout());
+    dispatch(resetChatState());
     navigate('/');
   };
 

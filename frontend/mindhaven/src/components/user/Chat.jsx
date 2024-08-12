@@ -60,8 +60,12 @@ const Chat = () => {
     return newSocket;
   }, [currentUser.id, dispatch]);
 
+
+
   useEffect(() => {
-    dispatch(fetchRecentChats());
+    dispatch(fetchRecentChats()).then((action) => {
+      console.log("Fetched recent chats:", action.payload);
+    });
     dispatch(fetchOnlineUsers());
     const newSocket = setupWebSocket();
 
@@ -71,6 +75,7 @@ const Chat = () => {
       }
     };
   }, [dispatch, setupWebSocket]);
+
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -100,6 +105,7 @@ const Chat = () => {
 
   
   const openChatWindow = async (user) => {
+    console.log('Opening chat window with user:', user);
     setMessage('');
     dispatch(setCurrentChat(user));
     try {
@@ -153,15 +159,19 @@ const Chat = () => {
         {recentChats.length > 0 ? (
           <div className="space-y-2">
             {recentChats.map((chat) => (
+              
               <div 
                 key={chat.id} 
                 className="flex items-center p-2 border rounded cursor-pointer hover:bg-gray-100"
                 onClick={() => openChatWindow(chat)}
               >
                 <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
-                <div>
+                <div className="flex-grow">
                   <p className="font-semibold">{chat.name}</p>
                   <p className="text-sm text-gray-500">{chat.last_message}</p>
+                </div>
+                <div className="text-xs text-gray-400">
+                  {formatDistanceToNow(new Date(chat.timestamp), { addSuffix: true })}
                 </div>
               </div>
             ))}

@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/user/userSlice'
 import logo from '../assets/logo.svg';
+import { resetChatState } from '../features/user/chatSlice';
+
 
 function Header() {
   const { currentUser, isAuthenticated, role } = useSelector(state => state.user);
@@ -11,6 +13,7 @@ function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(resetChatState());
     navigate('/')
   };
 

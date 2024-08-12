@@ -1,0 +1,7 @@
+.env
+
+# Ignore all __pycache__ directories
+**/__pycache__/
+
+# Ignore the media folder in the backend directory
+/backend/media/
