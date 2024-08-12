@@ -11,6 +11,18 @@ User = get_user_model()
 client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
 
 class ChatConsumer(AsyncWebsocketConsumer):
+ 
+ #created for celery notification
+    async def send_notification(self, event):
+        notification = event['notification']
+        await self.send(text_data=json.dumps({
+            'type': 'notification',
+            'notification': {
+                'id': notification['id'],
+                'content': notification['content'],
+                'created_at': notification['created_at'].isoformat(),
+            }
+        }))
     async def connect(self):
         self.user_id = self.scope['url_route']['kwargs']['user_id']
         self.user_group_name = f'user_{self.user_id}'
