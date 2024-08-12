@@ -106,13 +106,13 @@ const Chat = () => {
   
   const openChatWindow = async (user) => {
     console.log('Opening chat window with user:', user);
-    setMessage('');
     dispatch(setCurrentChat(user));
     try {
       const response = await axiosInstance.get(`/messages/?other_user_id=${user.id}`);
       dispatch(setMessages(response.data));
     } catch (error) {
       console.error('Error fetching messages:', error);
+      toast.error("Failed to load chat messages. Please try again.");
     }
   };
 
@@ -199,30 +199,19 @@ const Chat = () => {
               <X size={20} />
             </button>
           </div>
-
           <div className="h-64 p-3 overflow-y-auto">
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender === currentUser.id ? 'text-right' : 'text-left'}`}>
                 <p className={`inline-block p-2 rounded-lg ${
-                  msg.sender === currentUser.id 
-                    ? msg.status === 'blocked' 
-                      ? 'bg-red-100 text-red-800 border border-red-300' 
-                      : 'bg-blue-500 text-white' 
-                    : 'bg-gray-200'
+                  msg.sender === currentUser.id ? 'bg-blue-500 text-white' : 'bg-gray-200'
                 }`}>
                   {msg.content}
-                  {msg.status === 'blocked' && (
-                    <span className="ml-2 text-xs">
-                      🚫 This message was blocked
-                    </span>
-                  )}
                 </p>
                 <small className="block text-gray-500 mt-1">
-                  {formatMessageTime(msg.timestamp)}
+                  {formatDistanceToNow(new Date(msg.timestamp), { addSuffix: true })}
                 </small>
               </div>
             ))}
-            <div ref={messagesEndRef} />
           </div>
           <form onSubmit={sendMessage} className="border-t p-3 flex">
             <input

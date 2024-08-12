@@ -32,11 +32,11 @@ class ChatMessageListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        other_user_id = self.request.query_params.get('user_id')
+        other_user_id = self.request.query_params.get('other_user_id')
         if other_user_id:
             return ChatMessage.objects.filter(
-                (Q(sender=user) & Q(receiver_id=other_user_id)) |
-                (Q(sender_id=other_user_id) & Q(receiver=user))
+                (Q(sender=user, receiver_id=other_user_id) |
+                 Q(sender_id=other_user_id, receiver=user))
             ).order_by('timestamp')
         return ChatMessage.objects.filter(Q(sender=user) | Q(receiver=user)).order_by('timestamp')
 
