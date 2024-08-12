@@ -2,7 +2,7 @@ import json
 from openai import AsyncOpenAI
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
-from .models import ChatMessage
+from .models import ChatMessage,Notification
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
@@ -46,6 +46,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 # Save message to database
                 message = await self.save_message(sender_id, receiver_id, message_content)
 
+                # Create notification for the receiver
+                notification_content = f"New message from {message.sender.first_name}"
+                await self.create_notification(receiver_id, notification_content)
+
                 # Send message to sender's group
                 await self.channel_layer.group_send(
                     f'user_{sender_id}',
@@ -75,6 +79,18 @@ class ChatConsumer(AsyncWebsocketConsumer):
                         }
                     }
                 )
+                # Send notification to receiver's group
+                await self.channel_layer.group_send(
+                    f'user_{receiver_id}',
+                    {
+                        'type': 'new_notification',
+                        'notification': {
+                            'content': notification_content,
+                        }
+                    }
+                )
+
+                # Send AI response to the sender
             else:
                 # Send AI response to the sender
                 await self.send(text_data=json.dumps({
@@ -124,3 +140,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
             return False, "This message may contain sensitive content. Please be mindful of the community guidelines."
         
         return True, "Message allowed (fallback moderation)"
+    
+# notification create
+    async def new_notification(self, event):
+        await self.send(text_data=json.dumps({
+            'type': 'new_notification',
+            'notification': event['notification']
+        }))
+
+    @database_sync_to_async
+    def create_notification(self, user_id, content):
+        user = User.objects.get(id=user_id)
+        return Notification.objects.create(user=user, content=content)

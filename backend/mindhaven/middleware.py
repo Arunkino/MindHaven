@@ -14,7 +14,7 @@ class JWTMiddleware:
 
     def __call__(self, request):
         # Skip JWT authentication for login or other specified paths
-        if request.path in ['/login/', '/api/token/', '/api/token/refresh/']:
+        if request.path in ['/login/','/register/user/', '/api/token/', '/api/token/refresh/']:
             return self.get_response(request)
         
         jwt_auth = JWTAuthentication()

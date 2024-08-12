@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 import { formatDistanceToNow } from 'date-fns';
 import { LoadingSpinner } from '../LoadingSpinner';
 import axiosInstance from '../../utils/axiosConfig';
+import { addNotification } from '../../features/notifications/notificationSlice';
+
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -54,6 +56,8 @@ const Chat = () => {
 
         // Update recent chats if necessary
         dispatch(fetchRecentChats());
+      } else if (data.type === 'new_notification') {
+        dispatch(addNotification(data.notification));
       }
     };
 

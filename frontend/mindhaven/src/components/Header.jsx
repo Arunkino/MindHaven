@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/user/userSlice'
 import logo from '../assets/logo.svg';
 import { resetChatState } from '../features/user/chatSlice';
+import { fetchNotifications } from '../features/notifications/notificationSlice';
+import { Bell } from 'lucide-react';
+
 
 
 function Header() {
   const { currentUser, isAuthenticated, role } = useSelector(state => state.user);
+  const { notifications } = useSelector(state => state.notifications);
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(fetchNotifications());
+    }
+  }, [isAuthenticated, dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -24,19 +34,28 @@ function Header() {
           <img src={logo} alt="Mind Haven Logo" className="h-10 w-auto mr-2 animate-pulse" />
         </Link>
         <ul className="flex space-x-6 items-center">
-              
-        {isAuthenticated && (
-            <Link to='dashboard'>
-            <li className="text-custom-text text-xl">
-              Hi, {currentUser.role === 'admin' ? 'Admin' : currentUser.first_name}
-            </li>
-            </Link>
+          {isAuthenticated && (
+            <>
+              <Link to='dashboard'>
+                <li className="text-custom-text text-xl">
+                  Hi, {currentUser.role === 'admin' ? 'Admin' : currentUser.first_name}
+                </li>
+              </Link>
+              <li className="relative">
+                <Link to="/notifications" className="hover:text-custom-accent transition-colors duration-300">
+                  <Bell />
+                  {notifications.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                      {notifications.length}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            </>
           )}
           <li><Link to="" className="hover:text-custom-accent transition-colors duration-300">Home</Link></li>
           {isAuthenticated ? (
-            <>
-              <li><button onClick={handleLogout} className="hover:text-custom-accent transition-colors duration-300">Logout</button></li>
-            </>
+            <li><button onClick={handleLogout} className="hover:text-custom-accent transition-colors duration-300">Logout</button></li>
           ) : (
             <>
               <li><Link to="/login" className="hover:text-custom-accent transition-colors duration-300">Login</Link></li>

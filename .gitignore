@@ -5,3 +5,6 @@
 
 # Ignore the media folder in the backend directory
 /backend/media/
+
+__pycache__/
+*.pyc

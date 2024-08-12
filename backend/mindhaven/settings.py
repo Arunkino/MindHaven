@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'mindhaven.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mindhaven',
+        'NAME': 'mindhaven1',
         'USER':'postgres',
         'PASSWORD' : '1234',
         'HOST' : 'localhost'

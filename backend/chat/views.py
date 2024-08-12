@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
-from .models import ChatMessage
-from .serializers import ChatMessageSerializer
+from .models import ChatMessage, Notification
+from .serializers import ChatMessageSerializer, NotificationSerializer
 from django.db.models import Q, Max, F, Subquery, OuterRef
 from rest_framework.views import APIView
 from django.utils import timezone
@@ -73,3 +73,22 @@ class RecentChatsView(APIView):
 
         print("Recent chats data:", result)  # Debug print
         return Response(result)
+    
+class NotificationListView(generics.ListAPIView):
+    serializer_class = NotificationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Notification.objects.filter(user=self.request.user, is_read=False)
+
+class MarkNotificationReadView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, notification_id):
+        try:
+            notification = Notification.objects.get(id=notification_id, user=request.user)
+            notification.is_read = True
+            notification.save()
+            return Response({"status": "success"}, status=status.HTTP_200_OK)
+        except Notification.DoesNotExist:
+            return Response({"status": "error", "message": "Notification not found"}, status=status.HTTP_404_NOT_FOUND)
