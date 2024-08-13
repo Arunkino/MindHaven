@@ -21,32 +21,25 @@ export const setupAxiosInterceptors = () => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
-      // console.log("Response interceptor caught an error:", error);
-
-      if (error.response) {
-        // console.log("Error response status:", error.response.status);
-        // console.log("Error response data:", error.response.data);
-      } else if (error.request) {
-        // console.log("Error request:", error.request);
-      } else {
-        // console.log("Error message:", error.message);
-      }
-
       const originalRequest = error.config;
-      
-      if (originalRequest) {
-        // console.log("Original request:", originalRequest);
-      } else {
-        // console.log("Original request is undefined");
-        return Promise.reject(error);
-      }
+      const state = store.getState();
+      const refreshTokenValue = state.user.refreshToken;
 
-      if (error.response && error.response.status === 401 && originalRequest && !originalRequest._retry) {
+      if (error.response && error.response.status === 401) {
+        // Check if this request is a retry attempt and also if it's not the refresh token request itself
+        if (originalRequest._retry || originalRequest.url.includes('/api/token/refresh/')) {
+          // If it's a retry or a refresh token request itself, then logout
+          await store.dispatch(logout());
+          // Redirect to login page or show a login modal
+          // You might want to use your router to redirect, e.g.:
+          // history.push('/login');
+          return Promise.reject(error);
+        }
+
         originalRequest._retry = true;
+
         try {
           console.log("Attempting to refresh token...");
-          const state = store.getState();
-          const refreshTokenValue = state.user.refreshToken;
           const response = await axiosInstance.post('/api/token/refresh/', { refresh: refreshTokenValue });
           console.log("Token refresh response:", response.data);
           const { access, refresh } = response.data;
@@ -60,14 +53,11 @@ export const setupAxiosInterceptors = () => {
           }
           console.log("Logging out due to invalid refresh token...");
           await store.dispatch(logout());
-          // Redirect to login page or show a login modal
-          // You might want to use your router to redirect, e.g.:
-          // history.push('/login');
           return Promise.reject(refreshError);
         }
       }
 
-      // If it's a 401 error and we've already tried to refresh, or if it's any other error, reject the promise
+      // If it's any other error, reject the promise
       return Promise.reject(error);
     }
   );

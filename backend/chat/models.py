@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from mentor.models import Appointment
+
 User = get_user_model()
 
 class ChatMessage(models.Model):
@@ -17,13 +19,12 @@ class ChatMessage(models.Model):
     
 
 class Notification(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='notifications')
     content = models.TextField()
-    is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ['-created_at']
+    is_read = models.BooleanField(default=False)
+    appointment = models.ForeignKey(Appointment, on_delete=models.SET_NULL, null=True, blank=True)
+    notification_type = models.CharField(max_length=50, default='general')
 
     def __str__(self):
-        return f"Notification for {self.user}: {self.content[:50]}"
+        return f"Notification for {self.user.username}: {self.content[:50]}..."

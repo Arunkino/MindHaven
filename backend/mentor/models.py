@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta,datetime
+import uuid
 
 class Mentor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='mentor_profile')
@@ -55,5 +56,16 @@ class Appointment(models.Model):
             ('cancelled_by_mentor', 'Cancelled by Mentor')
         ], default='scheduled')
 
+    video_call_link = models.URLField(blank=True, null=True)
+    video_call_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    notification_sent = models.BooleanField(default=False)
+    agora_token = models.CharField(max_length=255, blank=True, null=True)
+
     def __str__(self):
         return f"{self.user.first_name} with {self.mentor.user.first_name} - {self.date} ({self.start_time} to {self.end_time})"
+
+    def save(self, *args, **kwargs):
+        if not self.video_call_link:
+            self.video_call_link = f"https://yourdomain.com/video-call/{self.video_call_id}/"
+        super().save(*args, **kwargs)
