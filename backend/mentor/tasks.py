@@ -4,12 +4,19 @@ from django.utils import timezone
 from datetime import timedelta
 from .models import Appointment
 from chat.models import Notification
+from time import sleep
 
 logger = logging.getLogger(__name__)
 @shared_task
 def test_task():
-    logger.info("This is a test task")
-    return "Test task completed"
+    logger.info("Test task started")
+    try:
+        sleep(5)  # Simulate some work
+        logger.info("Test task completed")
+        return "Test task completed successfully"
+    except Exception as e:
+        logger.error(f"Error in test_task: {str(e)}")
+        raise
 
 @shared_task
 def check_upcoming_appointments():

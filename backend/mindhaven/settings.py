@@ -232,25 +232,30 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'celery.log',
+            'formatter': 'verbose',
+        },
     },
     'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG',
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': False,
         },
         'celery': {
-            'handlers': ['console'],
-            'level': 'INFO',
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
             'propagate': False,
         },
         'mentor': {
-            'handlers': ['console'],
-            'level': 'INFO',
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
             'propagate': False,
         },
     },
@@ -264,6 +269,9 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_TASK_ALWAYS_EAGER = False
+CELERY_TASK_ACKS_LATE = True
+CELERY_TASK_TRACK_STARTED = True
 
 
 CELERY_BEAT_SCHEDULE = {

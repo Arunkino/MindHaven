@@ -1,0 +1,403 @@
+DEBUG 2024-08-13 11:07:40,572 _config 23408 3980 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:07:40,576 _config 23408 3980 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+INFO 2024-08-13 11:07:40,949 cli 23408 3980 Starting server at tcp:port=8000:interface=0.0.0.0
+INFO 2024-08-13 11:07:40,950 server 23408 3980 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2024-08-13 11:07:40,951 server 23408 3980 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2024-08-13 11:07:40,952 server 23408 3980 Listening on TCP address 0.0.0.0:8000
+DEBUG 2024-08-13 11:09:19,990 _config 17768 24604 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:19,997 _config 17768 24604 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:20,351 functional 17768 24604 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,352 functional 17768 24604 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,353 functional 17768 24604 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,354 functional 17768 24604 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:09:20,355 functional 17768 24604 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,355 functional 17768 24604 
+def check_upcoming_appointments():
+    return 1
+
+DEBUG 2024-08-13 11:09:20,357 functional 17768 24604 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,357 functional 17768 24604 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:09:20,358 functional 17768 24604 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,359 functional 17768 24604 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:09:20,360 functional 17768 24604 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:09:23,342 _config 24880 15628 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,348 _config 24880 15628 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,410 _config 16424 23040 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,434 _config 16424 23040 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,449 _config 20332 4816 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,474 _config 20332 4816 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,487 _config 23248 7148 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,499 _config 23248 7148 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,598 _config 17712 15068 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,614 _config 24292 23672 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,621 _config 17712 15068 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,630 _config 24292 23672 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,634 _config 24900 20336 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,675 _config 24900 20336 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:23,671 _config 20640 26340 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:23,718 _config 20640 26340 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:27,253 _config 4712 24236 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:27,257 _config 4712 24236 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:27,271 _config 12128 6416 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:27,276 _config 24976 21508 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:27,280 _config 12128 6416 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:27,284 _config 24976 21508 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:27,385 _config 25752 21500 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:27,390 _config 25752 21500 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:28,297 _config 6264 15856 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:28,302 _config 6264 15856 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:09:28,306 _config 1900 3052 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:09:28,313 _config 1900 3052 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:10:48,155 functional 6000 5296 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,158 functional 6000 5296 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,160 functional 6000 5296 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:10:48,163 functional 6000 5296 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,176 functional 6000 5296 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,179 functional 6000 5296 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,181 functional 6000 5296 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:10:48,182 functional 6000 5296 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,184 functional 6000 5296 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,185 functional 6000 5296 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:10:48,187 functional 6000 5296 
+def check_upcoming_appointments():
+    return 1
+
+INFO 2024-08-13 11:16:36,091 server 23408 3980 Killed 0 pending application instances
+DEBUG 2024-08-13 11:17:10,756 _config 13500 10436 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:17:10,758 _config 13500 10436 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:17:11,100 functional 13500 10436 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,101 functional 13500 10436 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,102 functional 13500 10436 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,103 functional 13500 10436 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:17:11,104 functional 13500 10436 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,105 functional 13500 10436 
+def check_upcoming_appointments():
+    return 1
+
+DEBUG 2024-08-13 11:17:11,106 functional 13500 10436 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,107 functional 13500 10436 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:17:11,108 functional 13500 10436 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,109 functional 13500 10436 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:17:11,110 functional 13500 10436 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:12,433 _config 2432 17584 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:17:12,437 _config 2432 17584 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:17:14,249 _config 16576 25144 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:17:14,251 _config 16576 25144 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:17:17,179 _config 24616 22544 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:17:17,184 _config 24616 22544 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:17:40,847 functional 25860 13360 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,850 functional 25860 13360 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,851 functional 25860 13360 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:17:40,852 functional 25860 13360 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,853 functional 25860 13360 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,855 functional 25860 13360 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,857 functional 25860 13360 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:17:40,859 functional 25860 13360 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,861 functional 25860 13360 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,863 functional 25860 13360 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:17:40,864 functional 25860 13360 
+def check_upcoming_appointments():
+    return 1
+
+INFO 2024-08-13 11:19:53,283 tasks 25860 13360 Test task started
+INFO 2024-08-13 11:19:58,284 tasks 25860 13360 Test task completed
+INFO 2024-08-13 11:19:58,284 trace 25860 13360 Task mentor.tasks.test_task[807958d6-0ebe-4475-8355-34a547f203e3] succeeded in 5.0s: 'Test task completed successfully'
+DEBUG 2024-08-13 11:49:35,622 _config 17820 3932 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:49:35,625 _config 17820 3932 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:49:35,943 functional 17820 3932 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,945 functional 17820 3932 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,946 functional 17820 3932 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:49:35,946 functional 17820 3932 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:49:35,948 functional 17820 3932 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,949 functional 17820 3932 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,950 functional 17820 3932 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,951 functional 17820 3932 
+def check_upcoming_appointments():
+    return 1
+
+DEBUG 2024-08-13 11:49:35,952 functional 17820 3932 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,954 functional 17820 3932 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:49:35,956 functional 17820 3932 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+INFO 2024-08-13 11:49:37,521 tasks 17820 3932 Test task started
+INFO 2024-08-13 11:49:42,522 tasks 17820 3932 Test task completed
+INFO 2024-08-13 11:49:42,530 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:42,531 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:42.531127+00:00 and 2024-08-13 06:24:42.531127+00:00
+INFO 2024-08-13 11:49:42,673 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:42,675 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:42,679 tasks 17820 3932 Test task started
+INFO 2024-08-13 11:49:47,680 tasks 17820 3932 Test task completed
+INFO 2024-08-13 11:49:47,686 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:47,687 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:47.687253+00:00 and 2024-08-13 06:24:47.687253+00:00
+INFO 2024-08-13 11:49:47,811 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:47,813 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:47,818 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:47,819 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:47.819294+00:00 and 2024-08-13 06:24:47.819294+00:00
+INFO 2024-08-13 11:49:47,960 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:47,961 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:47,967 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:47,968 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:47.968251+00:00 and 2024-08-13 06:24:47.968251+00:00
+INFO 2024-08-13 11:49:48,091 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,092 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,098 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:48,099 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:48.099970+00:00 and 2024-08-13 06:24:48.099970+00:00
+INFO 2024-08-13 11:49:48,245 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,247 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,251 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:48,252 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:48.252485+00:00 and 2024-08-13 06:24:48.252485+00:00
+INFO 2024-08-13 11:49:48,393 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,396 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,403 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:48,403 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:48.403551+00:00 and 2024-08-13 06:24:48.403551+00:00
+INFO 2024-08-13 11:49:48,556 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,558 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,564 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:48,565 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:48.565285+00:00 and 2024-08-13 06:24:48.565285+00:00
+INFO 2024-08-13 11:49:48,698 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,700 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,705 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:49:48,706 tasks 17820 3932 Checking appointments between 2024-08-13 06:19:48.706307+00:00 and 2024-08-13 06:24:48.706307+00:00
+INFO 2024-08-13 11:49:48,837 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:49:48,840 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:49:48,844 tasks 17820 3932 Test task started
+INFO 2024-08-13 11:49:53,845 tasks 17820 3932 Test task completed
+INFO 2024-08-13 11:49:53,852 tasks 17820 3932 Test task started
+INFO 2024-08-13 11:49:58,854 tasks 17820 3932 Test task completed
+INFO 2024-08-13 11:49:58,864 tasks 17820 3932 Test task started
+INFO 2024-08-13 11:50:03,865 tasks 17820 3932 Test task completed
+DEBUG 2024-08-13 11:52:59,774 _config 25032 26552 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 11:52:59,779 _config 25032 26552 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+DEBUG 2024-08-13 11:53:00,181 functional 25032 26552 
+def chunks(task, it, n):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,182 functional 25032 26552 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,183 functional 25032 26552 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,184 functional 25032 26552 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,185 functional 25032 26552 
+def xmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,186 functional 25032 26552 
+def test_task():
+    return 1
+
+DEBUG 2024-08-13 11:53:00,187 functional 25032 26552 
+def backend_cleanup():
+    return 1
+
+DEBUG 2024-08-13 11:53:00,188 functional 25032 26552 
+def chain(*args, **kwargs):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,190 functional 25032 26552 
+def check_upcoming_appointments():
+    return 1
+
+DEBUG 2024-08-13 11:53:00,191 functional 25032 26552 
+def xstarmap(task, it):
+    return 1
+
+DEBUG 2024-08-13 11:53:00,193 functional 25032 26552 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+INFO 2024-08-13 11:53:00,345 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:53:00,345 tasks 17820 3932 Checking appointments between 2024-08-13 06:23:00.345866+00:00 and 2024-08-13 06:28:00.345866+00:00
+INFO 2024-08-13 11:53:00,498 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:53:00,500 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:54:00,004 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:54:00,005 tasks 17820 3932 Checking appointments between 2024-08-13 06:24:00.005206+00:00 and 2024-08-13 06:29:00.005206+00:00
+INFO 2024-08-13 11:54:00,117 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:54:00,119 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:55:00,013 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:55:00,015 tasks 17820 3932 Checking appointments between 2024-08-13 06:25:00.015339+00:00 and 2024-08-13 06:30:00.015339+00:00
+INFO 2024-08-13 11:55:00,164 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:55:00,166 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:56:00,010 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:56:00,011 tasks 17820 3932 Checking appointments between 2024-08-13 06:26:00.011084+00:00 and 2024-08-13 06:31:00.011084+00:00
+INFO 2024-08-13 11:56:00,175 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 11:56:00,178 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:57:00,008 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:57:00,009 tasks 17820 3932 Checking appointments between 2024-08-13 06:27:00.009220+00:00 and 2024-08-13 06:32:00.009220+00:00
+INFO 2024-08-13 11:57:00,128 tasks 17820 3932 Found 1 upcoming appointments
+INFO 2024-08-13 11:57:00,135 tasks 17820 3932 Processing appointment: Arun with George - 2024-08-13 (06:30:00 to 07:30:00)
+INFO 2024-08-13 11:57:00,148 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:58:00,007 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:58:00,008 tasks 17820 3932 Checking appointments between 2024-08-13 06:28:00.008467+00:00 and 2024-08-13 06:33:00.008467+00:00
+INFO 2024-08-13 11:58:00,146 tasks 17820 3932 Found 1 upcoming appointments
+INFO 2024-08-13 11:58:00,155 tasks 17820 3932 Processing appointment: Arun with George - 2024-08-13 (06:30:00 to 07:30:00)
+INFO 2024-08-13 11:58:00,170 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 11:59:00,012 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 11:59:00,013 tasks 17820 3932 Checking appointments between 2024-08-13 06:29:00.013172+00:00 and 2024-08-13 06:34:00.013172+00:00
+INFO 2024-08-13 11:59:00,154 tasks 17820 3932 Found 1 upcoming appointments
+INFO 2024-08-13 11:59:00,162 tasks 17820 3932 Processing appointment: Arun with George - 2024-08-13 (06:30:00 to 07:30:00)
+INFO 2024-08-13 11:59:00,178 tasks 17820 3932 Task check_upcoming_appointments completed
+INFO 2024-08-13 12:00:00,007 tasks 17820 3932 Task check_upcoming_appointments started
+INFO 2024-08-13 12:00:00,010 tasks 17820 3932 Checking appointments between 2024-08-13 06:30:00.009571+00:00 and 2024-08-13 06:35:00.009571+00:00
+INFO 2024-08-13 12:00:00,162 tasks 17820 3932 Found 0 upcoming appointments
+INFO 2024-08-13 12:00:00,164 tasks 17820 3932 Task check_upcoming_appointments completed
+DEBUG 2024-08-13 12:00:42,600 _config 26104 26428 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG 2024-08-13 12:00:42,603 _config 26104 26428 load_verify_locations cafile='C:\\Users\\aruns\\Django_Projects\\DRF\\MIND_HAVEN\\backend\\new_myEnv\\Lib\\site-packages\\certifi\\cacert.pem'
+INFO 2024-08-13 12:00:42,926 cli 26104 26428 Starting server at tcp:port=8000:interface=0.0.0.0
+INFO 2024-08-13 12:00:42,927 server 26104 26428 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2024-08-13 12:00:42,928 server 26104 26428 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2024-08-13 12:00:42,928 server 26104 26428 Listening on TCP address 0.0.0.0:8000
