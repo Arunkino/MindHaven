@@ -126,6 +126,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def moderate_message(self, message):
         try:
+            print("api Keyyyyy:",settings.OPENAI_API_KEY)
             response = await client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[

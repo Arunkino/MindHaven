@@ -78,7 +78,7 @@ const UserDashboard = () => {
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-md">
         <div className="p-4">
-          <h2 className="text-2xl font-semibold text-gray-800">MindHaven</h2>
+          {/* <h2 className="text-2xl font-semibold text-gray-800">MindHaven</h2> */}
         </div>
         <nav className="mt-6">
           <NavItem icon={User} label="My Profile" section="profile" />
@@ -94,7 +94,7 @@ const UserDashboard = () => {
       {/* Main content */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-8">
-          <h1 className="text-3xl font-semibold text-gray-800 mb-8">Welcome to MindHaven</h1>
+          <h1 className="text-3xl font-semibold text-gray-600 mb-8">Welcome to MindHaven</h1>
           {renderContent()}
         </div>
       </div>

@@ -27,6 +27,7 @@ const ScheduleAvailability = () => {
     // Set the selectedDate to the start of the current day in the user's local timezone
     const now = new Date();
     setSelectedDate(new Date(now.getFullYear(), now.getMonth(), now.getDate()));
+    console.log("selectedDate:", selectedDate);
   }, []);
 
   const fetchAvailabilities = async () => {

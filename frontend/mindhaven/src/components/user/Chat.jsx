@@ -114,6 +114,10 @@ const Chat = () => {
     try {
       const response = await axiosInstance.get(`/messages/?other_user_id=${user.id}`);
       dispatch(setMessages(response.data));
+      // Add a small delay before scrolling
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     } catch (error) {
       console.error('Error fetching messages:', error);
       toast.error("Failed to load chat messages. Please try again.");
@@ -216,6 +220,7 @@ const Chat = () => {
                 </small>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <form onSubmit={sendMessage} className="border-t p-3 flex">
             <input
