@@ -9,6 +9,8 @@ import { formatDistanceToNow } from 'date-fns';
 import { LoadingSpinner } from '../LoadingSpinner';
 import axiosInstance from '../../utils/axiosConfig';
 import { addNotification } from '../../features/notifications/notificationSlice';
+import { sendMessage } from '../../features/websocketService';
+
 
 
 const Chat = () => {
@@ -19,50 +21,10 @@ const Chat = () => {
   const currentUser = useSelector(state => state.user.currentUser);
   
   const [message, setMessage] = useState('');
-  const [socket, setSocket] = useState(null);
-  const [wsStatus, setWsStatus] = useState('Not initialized');
+
   const messagesEndRef = useRef(null);
 
-  const setupWebSocket = useCallback(() => {
-    const wsUrl = `ws://127.0.0.1:8000/ws/chat/${currentUser.id}/`;
-    const newSocket = new WebSocket(wsUrl);
-
-    newSocket.onopen = () => {
-      setSocket(newSocket);
-      setWsStatus('Connected');
-      console.log('WebSocket connected');
-    };
-
-    newSocket.onclose = () => {
-      setWsStatus('Disconnected');
-      console.log('WebSocket disconnected');
-    };
-
-    newSocket.onerror = (error) => {
-      setWsStatus('Error');
-      console.error('WebSocket error:', error);
-    };
-
-    newSocket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      console.log('Received WebSocket message:', data);
-
-      if (data.type === 'ai_moderation') {
-        toast.warning(data.message);
-        dispatch(updateMessageStatus({ messageId: data.message_id, status: 'blocked' }));
-      } else if (data.type === 'chat_message') {
-        const newMessage = data.message;
-        dispatch(addMessage(newMessage));
-
-        // Update recent chats if necessary
-        dispatch(fetchRecentChats());
-      } else if (data.type === 'new_notification') {
-        dispatch(addNotification(data.notification));
-      }
-    };
-
-    return newSocket;
-  }, [currentUser.id, dispatch]);
+  
 
 
 
@@ -71,17 +33,11 @@ const Chat = () => {
       console.log("Fetched recent chats:", action.payload);
     });
     dispatch(fetchOnlineUsers());
-    const newSocket = setupWebSocket();
 
-    return () => {
-      if (newSocket) {
-        newSocket.close();
-      }
-    };
-  }, [dispatch, setupWebSocket]);
+  }, [dispatch]);
 
 
-  const sendMessage = (e) => {
+  const handleSendMessage = (e) => {
     e.preventDefault();
     if (message.trim() && currentChat) {
       const messageData = {
@@ -93,15 +49,10 @@ const Chat = () => {
         }
       };
       
-      if (socket && socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify(messageData));
-        setMessage('');
-      } else {
-        console.error('WebSocket is not open. Unable to send message.');
-        toast.error("Unable to send message. Please try again.");
-      }
+      sendMessage(messageData);
+      setMessage('');
     }
-  };  
+  };
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -159,9 +110,7 @@ const Chat = () => {
         titleColor="text-custom-accent"
         accentColor="bg-yellow-400"
       />
-      <div className="text-sm text-gray-500 mt-2">
-        WebSocket status: {wsStatus}
-      </div>
+      
       <div className="mb-4">
         <h2 className="text-xl font-semibold mb-2">Recent Chats</h2>
         {recentChats.length > 0 ? (
@@ -222,7 +171,7 @@ const Chat = () => {
             ))}
             <div ref={messagesEndRef} />
           </div>
-          <form onSubmit={sendMessage} className="border-t p-3 flex">
+          <form onSubmit={handleSendMessage} className="border-t p-3 flex">
             <input
               type="text"
               placeholder="Type a message..."
