@@ -25,6 +25,17 @@ export const markNotificationAsRead = createAsyncThunk(
     }
   }
 );
+export const clearAllNotifications = createAsyncThunk(
+  'notifications/clearAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axiosInstance.post('/notifications/clear-all/');
+      return;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const notificationSlice = createSlice({
   name: 'notifications',
@@ -55,6 +66,9 @@ const notificationSlice = createSlice({
         state.notifications = state.notifications.filter(
           (notification) => notification.id !== action.payload
         );
+      })
+      .addCase(clearAllNotifications.fulfilled, (state) => {
+        state.notifications = [];
       });
   },
 });

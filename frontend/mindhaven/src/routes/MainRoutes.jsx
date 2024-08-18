@@ -6,7 +6,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import UserDashboard from '../pages/UserDashboard';
 import ProtectedRoute from './ProtectedRoute';
-import NotificationList from '../components/NotificationList';
+// import NotificationList from '../components/NotificationList';
 
 function MainRoutes() {
   return (
@@ -15,7 +15,7 @@ function MainRoutes() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="/notifications" element={<NotificationList />} />
+        {/* <Route path="/notifications" element={<NotificationList />} /> */}
         <Route 
           path="dashboard" 
           element={

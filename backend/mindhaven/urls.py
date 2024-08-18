@@ -6,7 +6,7 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 import chat.routing
 
-from chat.views import NotificationListView, MarkNotificationReadView
+from chat.views import NotificationListView, MarkNotificationReadView, ClearAllNotificationsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('messages/', include('chat.urls')),
     path('notifications/', NotificationListView.as_view(), name='notification-list'),
     path('notifications/<int:notification_id>/mark-read/', MarkNotificationReadView.as_view(), name='mark-notification-read'),
+    path('notifications/clear-all/', ClearAllNotificationsView.as_view(), name='clear-all-notifications'),
 
 ]
 
