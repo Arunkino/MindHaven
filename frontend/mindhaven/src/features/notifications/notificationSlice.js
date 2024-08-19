@@ -46,7 +46,12 @@ const notificationSlice = createSlice({
   },
   reducers: {
     addNotification: (state, action) => {
-      state.notifications.unshift(action.payload);
+      const newNotification = action.payload;
+      if (newNotification.content.includes('video-call')) {
+        newNotification.type = 'video_call';
+        newNotification.callLink = newNotification.content.split('Join here: ')[1];
+      }
+      state.notifications.unshift(newNotification);
     },
   },
   extraReducers: (builder) => {

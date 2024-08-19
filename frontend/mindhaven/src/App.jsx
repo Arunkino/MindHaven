@@ -11,7 +11,7 @@ import { setTokens, setUser } from './features/user/userSlice';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { closeWebSocket, setupWebSocket } from './features/websocketService';
-
+import VideoCall from './components/VideoCall';
 
 
 
@@ -45,6 +45,7 @@ function App() {
         <Route path="/*" element={<MainRoutes />} />
         <Route path="/mentor/*" element={<MentorRoutes />} />
         <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route path="/video-call/:callId" element={<VideoCall />} />
       </Routes>
     </Router>
   );

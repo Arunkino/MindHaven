@@ -13,3 +13,10 @@
 .service-card{
     cursor: pointer;
 }
+.video-stream {
+    width: 320px;
+    height: 240px;
+    background-color: #f0f0f0;
+    margin: 10px;
+    border: 1px solid #ccc;
+  }
