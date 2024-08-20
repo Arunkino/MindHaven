@@ -26,6 +26,8 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 AGORA_APP_ID = os.getenv('AGORA_APP_ID')
 AGORA_APP_CERTIFICATE = os.getenv('AGORA_APP_CERTIFICATE')
 
+DOMAIN = os.getenv('DOMAIN')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 

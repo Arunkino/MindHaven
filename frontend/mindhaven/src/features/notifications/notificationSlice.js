@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../utils/axiosConfig';
 
-
 export const fetchNotifications = createAsyncThunk(
   'notifications/fetchNotifications',
   async (_, { rejectWithValue }) => {
@@ -25,6 +24,7 @@ export const markNotificationAsRead = createAsyncThunk(
     }
   }
 );
+
 export const clearAllNotifications = createAsyncThunk(
   'notifications/clearAll',
   async (_, { rejectWithValue }) => {
@@ -47,11 +47,19 @@ const notificationSlice = createSlice({
   reducers: {
     addNotification: (state, action) => {
       const newNotification = action.payload;
-      if (newNotification.content.includes('video-call')) {
+      if (newNotification.content.includes('Join here:')) {
         newNotification.type = 'video_call';
-        newNotification.callLink = newNotification.content.split('Join here: ')[1];
+        const linkStart = newNotification.content.indexOf('http');
+        const linkEnd = newNotification.content.indexOf(' ', linkStart);
+        newNotification.callLink = newNotification.content.slice(linkStart, linkEnd > -1 ? linkEnd : undefined);
       }
       state.notifications.unshift(newNotification);
+    },
+    updateNotification: (state, action) => {
+      const index = state.notifications.findIndex(n => n.id === action.payload.id);
+      if (index !== -1) {
+        state.notifications[index] = { ...state.notifications[index], ...action.payload };
+      }
     },
   },
   extraReducers: (builder) => {
@@ -61,7 +69,15 @@ const notificationSlice = createSlice({
       })
       .addCase(fetchNotifications.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.notifications = action.payload;
+        state.notifications = action.payload.map(notification => {
+          if (notification.content.includes('Join here:')) {
+            notification.type = 'video_call';
+            const linkStart = notification.content.indexOf('http');
+            const linkEnd = notification.content.indexOf(' ', linkStart);
+            notification.callLink = notification.content.slice(linkStart, linkEnd > -1 ? linkEnd : undefined);
+          }
+          return notification;
+        });
       })
       .addCase(fetchNotifications.rejected, (state, action) => {
         state.status = 'failed';
@@ -78,6 +94,6 @@ const notificationSlice = createSlice({
   },
 });
 
-export const { addNotification } = notificationSlice.actions;
+export const { addNotification, updateNotification } = notificationSlice.actions;
 
 export default notificationSlice.reducer;

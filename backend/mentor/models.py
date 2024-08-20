@@ -67,5 +67,5 @@ class Appointment(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.video_call_link:
-            self.video_call_link = f"https://yourdomain.com/video-call/{self.video_call_id}/"
+            self.video_call_link = f"{settings.DOMAIN}video-call/{self.video_call_id}/"
         super().save(*args, **kwargs)

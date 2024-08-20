@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/user/userSlice';
 import { resetChatState } from '../features/user/chatSlice';
 import { fetchNotifications, markNotificationAsRead, clearAllNotifications } from '../features/notifications/notificationSlice';
-import { Bell, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import logo from '../assets/logo.svg';
+import Notification from './Notification';
 
 function Header() {
   const { currentUser, isAuthenticated, role } = useSelector(state => state.user);
@@ -13,7 +14,6 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
-  const [expandedNotifications, setExpandedNotifications] = useState({});
   const notificationRef = useRef(null);
 
   useEffect(() => {
@@ -47,18 +47,6 @@ function Header() {
 
   const handleClearAll = () => {
     dispatch(clearAllNotifications());
-  };
-
-  const toggleNotificationExpansion = (notificationId) => {
-    setExpandedNotifications(prev => ({
-      ...prev,
-      [notificationId]: !prev[notificationId]
-    }));
-  };
-
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.substr(0, maxLength) + '...';
   };
 
   return (
@@ -104,47 +92,11 @@ function Header() {
                       ) : (
                         <ul className="max-h-96 overflow-y-auto">
                           {notifications.map(notification => (
-                            <li key={notification.id} className="border-b last:border-b-0 hover:bg-gray-50 transition-colors duration-150">
-                              <div className="px-4 py-3">
-                                <div className="flex justify-between items-start">
-                                  <div className="flex-1 pr-4">
-                                    <p 
-                                      className={`text-sm text-gray-800 ${expandedNotifications[notification.id] ? '' : 'cursor-pointer'}`}
-                                      onClick={() => toggleNotificationExpansion(notification.id)}
-                                    >
-                                      {expandedNotifications[notification.id] 
-                                        ? notification.content
-                                        : truncateText(notification.content, 48)}
-                                    </p>
-                                    {notification.content.length > 48 && (
-                                      <button 
-                                        onClick={() => toggleNotificationExpansion(notification.id)}
-                                        className="text-xs text-blue-600 hover:text-blue-800 mt-1 flex items-center"
-                                      >
-                                        {expandedNotifications[notification.id] ? (
-                                          <>
-                                            Show less <ChevronUp size={14} className="ml-1" />
-                                          </>
-                                        ) : (
-                                          <>
-                                            Read more <ChevronDown size={14} className="ml-1" />
-                                          </>
-                                        )}
-                                      </button>
-                                    )}
-                                  </div>
-                                  <button
-                                    onClick={() => handleMarkAsRead(notification.id)}
-                                    className="text-gray-400 hover:text-gray-600 transition-colors duration-150"
-                                  >
-                                    <X size={16} />
-                                  </button>
-                                </div>
-                                <p className="text-xs text-gray-500 mt-1">
-                                  {new Date(notification.created_at).toLocaleString()}
-                                </p>
-                              </div>
-                            </li>
+                            <Notification 
+                              key={notification.id}
+                              notification={notification}
+                              onMarkAsRead={handleMarkAsRead}
+                            />
                           ))}
                         </ul>
                       )}

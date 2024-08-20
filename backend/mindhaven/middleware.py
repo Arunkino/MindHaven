@@ -33,15 +33,15 @@ class JWTMiddleware:
 
 class UserActivityMiddleware(MiddlewareMixin):
     def process_request(self, request):
-        print("UserActivityMiddleware: process_request")
-        print(f"User authenticated: {request.user.is_authenticated}")
-        print(f"User: {request.user}")
+        # print("UserActivityMiddleware: process_request")
+        # print(f"User authenticated: {request.user.is_authenticated}")
+        # print(f"User: {request.user}")
 
         if request.user.is_authenticated:
             now = timezone.now()
             last_activity_threshold = now - timedelta(minutes=1)
 
-            print(f"Last activity: {request.user.last_activity}")
+            # print(f"Last activity: {request.user.last_activity}")
             if request.user.last_activity is None or request.user.last_activity < last_activity_threshold:
                 User.objects.filter(id=request.user.id).update(last_activity=now)
-                print("UserActivityMiddleware: Last activity updated")
+                # print("UserActivityMiddleware: Last activity updated")
