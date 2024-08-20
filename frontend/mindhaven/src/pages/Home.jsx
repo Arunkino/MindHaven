@@ -17,7 +17,7 @@ const Home = () => {
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
         <div className="flex flex-col lg:flex-row items-center py-12 px-4">
-          <Lottie animationData={animationData} loop={true} />
+          {/* <Lottie animationData={animationData} loop={true} /> */}
           {/* Left side (content) */}
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8 text-center lg:text-left">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-custom-text">Find Peace Within with MindHaven</h1>
