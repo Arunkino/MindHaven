@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { addNotification } from './notifications/notificationSlice';
 import { addMessage, updateMessageStatus } from './user/chatSlice';
-
+import { updateCallStatus } from './videoCallSlice';
 
 
 let socket = null;
@@ -33,6 +33,9 @@ export const setupWebSocket = (dispatch, currentUserId) => {
       dispatch(addMessage(data.message));
     } else if (data.type === 'new_notification') {
       dispatch(addNotification(data.notification));
+    }else if (data.type === 'video_call_status') {
+      // Handle video call status updates
+      dispatch(updateCallStatus(data.status));
     }
   };
 

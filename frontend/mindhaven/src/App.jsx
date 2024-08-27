@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { closeWebSocket, setupWebSocket } from './features/websocketService';
 import VideoCall from './components/VideoCall';
+import ErrorBoundary from './components/ErrorBoundary';
 
 
 
@@ -45,7 +46,11 @@ function App() {
         <Route path="/*" element={<MainRoutes />} />
         <Route path="/mentor/*" element={<MentorRoutes />} />
         <Route path="/admin/*" element={<AdminRoutes />} />
-        <Route path="/video-call/:callId" element={<VideoCall />} />
+        <Route path="/video-call/:callId" element={
+          <ErrorBoundary>
+           <VideoCall />
+          </ErrorBoundary>
+          } />
       </Routes>
     </Router>
   );

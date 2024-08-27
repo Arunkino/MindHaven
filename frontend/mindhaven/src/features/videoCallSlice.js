@@ -3,25 +3,24 @@ import axiosInstance from '../utils/axiosConfig';
 
 export const fetchToken = createAsyncThunk(
   'videoCall/fetchToken',
-  async (appointmentId, { rejectWithValue }) => {
+  async (appointmentId, { getState, rejectWithValue }) => {
+    const { videoCall } = getState();
+    if (videoCall.isFetching) {
+      return rejectWithValue('Token fetch already in progress');
+    }
     try {
+        console.log('Fetching token... appointmentId:',appointmentId);
       const response = await axiosInstance.get(`/api/appointments/${appointmentId}/token/`);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response?.data || 'Failed to fetch token');
     }
-  }
-);
-
-export const updateCallStatus = createAsyncThunk(
-  'videoCall/updateCallStatus',
-  async ({ appointmentId, action }, { rejectWithValue }) => {
-    try {
-      const response = await axiosInstance.post(`/api/appointments/${appointmentId}/call-status/`, { action });
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { videoCall } = getState();
+      return !videoCall.isFetching; // Prevent fetching if already in progress
+    },
   }
 );
 
@@ -34,7 +33,7 @@ const videoCallSlice = createSlice({
     callStartTime: null,
     callEndTime: null,
     error: null,
-    status: 'idle',
+    isFetching: false,
   },
   reducers: {
     resetVideoCall: (state) => {
@@ -44,36 +43,32 @@ const videoCallSlice = createSlice({
       state.callStartTime = null;
       state.callEndTime = null;
       state.error = null;
-      state.status = 'idle';
+      state.isFetching = false;
+    },
+    updateCallStatus: (state, action) => {
+      // Update the call status based on action
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchToken.pending, (state) => {
-        state.status = 'loading';
+        state.isFetching = true;
+        state.error = null;
       })
       .addCase(fetchToken.fulfilled, (state, action) => {
-        state.status = 'succeeded';
         state.token = action.payload.token;
         state.isMentorJoined = action.payload.is_mentor_joined;
         state.isUserJoined = action.payload.is_user_joined;
+        state.isFetching = false;
+        state.error = null;
       })
       .addCase(fetchToken.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.payload.error;
-      })
-      .addCase(updateCallStatus.fulfilled, (state, action) => {
-        if (action.meta.arg.action === 'start') {
-          state.callStartTime = new Date().toISOString();
-        } else if (action.meta.arg.action === 'end') {
-          state.callEndTime = new Date().toISOString();
-          state.isMentorJoined = false;
-          state.isUserJoined = false;
-        }
+        state.isFetching = false;
+        state.error = action.payload || 'An error occurred while fetching the token';
+        state.token = null;
       });
   },
 });
 
-export const { resetVideoCall } = videoCallSlice.actions;
-
+export const { resetVideoCall, updateCallStatus } = videoCallSlice.actions;
 export default videoCallSlice.reducer;
