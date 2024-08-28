@@ -24,8 +24,7 @@ class MentorAvailability(models.Model):
 
     def __str__(self):
         return f"{self.mentor.user.username} - {self.get_day_of_week_display()} ({self.start_time} to {self.end_time})"
-    def __str__(self):
-        return f"{self.mentor.user.username} - {self.date} ({self.start_time} to {self.end_time})"
+   
 
     def is_open(self):
         now = timezone.now()
@@ -63,10 +62,24 @@ class Appointment(models.Model):
     notification_sent = models.BooleanField(default=False)
     agora_token = models.CharField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return f"{self.user.first_name} with {self.mentor.user.first_name} - {self.date} ({self.start_time} to {self.end_time})"
+
+    user_joined = models.BooleanField(default=False)
+    mentor_joined = models.BooleanField(default=False)
+    call_start_time = models.DateTimeField(null=True, blank=True)
+    call_end_time = models.DateTimeField(null=True, blank=True)
+    call_duration = models.DurationField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        if isinstance(self.call_duration, int):
+            self.call_duration = timedelta(seconds=self.call_duration)
+        super().save(*args, **kwargs)
+
         if not self.video_call_link:
             self.video_call_link = f"{settings.DOMAIN}video-call/{self.video_call_id}/"
         super().save(*args, **kwargs)
+
+
+    def __str__(self):
+        return f"{self.user.first_name} with {self.mentor.user.first_name} - {self.date} ({self.start_time} to {self.end_time})"
+
+        
