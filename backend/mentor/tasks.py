@@ -6,14 +6,21 @@ from datetime import timedelta
 from celery import shared_task
 import logging
 from mindhaven.agora_utils import generate_agora_token
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+import pytz
 
 logger = logging.getLogger(__name__)
 
 @shared_task
 def check_upcoming_appointments():
     logger.info("Task check_upcoming_appointments started")
-    now = timezone.now()
+    
+    # Get the server's timezone
+    server_tz = pytz.timezone('Asia/Kolkata')  # Replace with your server's timezone
+    now = timezone.now().astimezone(server_tz)
     upcoming_time = now + timedelta(minutes=5)
+    
     logger.info(f"Checking appointments between {now} and {upcoming_time}")
 
     upcoming_appointments = Appointment.objects.filter(
@@ -26,6 +33,8 @@ def check_upcoming_appointments():
 
     logger.info(f"Found {upcoming_appointments.count()} upcoming appointments")
 
+    channel_layer = get_channel_layer()
+
     for appointment in upcoming_appointments:
         logger.info(f"Processing appointment: {appointment}")
 
@@ -37,23 +46,41 @@ def check_upcoming_appointments():
                 appointment.agora_token = token
                 logger.info(f"Generated Agora token: {token}")
 
-            # Create notification for user
+            # Create and send notification for user
             user_notification = Notification.objects.create(
                 user=appointment.user,
                 content=f"Your appointment with {appointment.mentor.user.get_full_name()} starts in 5 minutes. Join here: {appointment.video_call_link}",
                 appointment=appointment,
                 notification_type='appointment_reminder'
             )
-            logger.info(f"Created user notification: {user_notification}")
+            async_to_sync(channel_layer.group_send)(
+                f'user_{appointment.user.id}',
+                {
+                    'type': 'send_notification',
+                    'notification': {
+                        'content': user_notification.content,
+                    }
+                }
+            )
+            logger.info(f"Sent user notification: {user_notification}")
 
-            # Create notification for mentor
+            # Create and send notification for mentor
             mentor_notification = Notification.objects.create(
                 user=appointment.mentor.user,
                 content=f"Your appointment with {appointment.user.get_full_name()} starts in 5 minutes. Join here: {appointment.video_call_link}",
                 appointment=appointment,
                 notification_type='appointment_reminder'
             )
-            logger.info(f"Created mentor notification: {mentor_notification}")
+            async_to_sync(channel_layer.group_send)(
+                f'user_{appointment.mentor.user.id}',
+                {
+                    'type': 'new_notification',
+                    'notification': {
+                        'content': mentor_notification.content,
+                    }
+                }
+            )
+            logger.info(f"Sent mentor notification: {mentor_notification}")
 
             # Mark the appointment as notified
             appointment.notification_sent = True

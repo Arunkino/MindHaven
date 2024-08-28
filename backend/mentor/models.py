@@ -48,6 +48,7 @@ class Appointment(models.Model):
     availability_slot = models.OneToOneField(AvailabilitySlot, on_delete=models.CASCADE, related_name='appointment')
     user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='appointments')
     mentor = models.ForeignKey('Mentor', on_delete=models.CASCADE, related_name='appointments')
+    mentor_user_id = models.IntegerField(blank=True, null=True)
     date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()

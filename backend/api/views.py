@@ -197,6 +197,7 @@ class AvailabilitySlotViewSet(viewsets.ModelViewSet):
                 availability_slot=slot,
                 user=request.user,
                 mentor=slot.mentor_availability.mentor,
+                mentor_user_id = slot.mentor_availability.mentor.user_id,
                 date=slot.date,
                 start_time=slot.start_time,
                 end_time=slot.end_time

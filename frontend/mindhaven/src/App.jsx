@@ -11,7 +11,9 @@ import { setTokens, setUser } from './features/user/userSlice';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { closeWebSocket, setupWebSocket } from './features/websocketService';
-import VideoCall from './components/VideoCall';
+import VideoCallWrapper from './components/VideoCall';
+
+
 
 
 
@@ -31,6 +33,7 @@ function App() {
   useEffect(() => {
     if (currentUser && currentUser.id) {
       const socket = setupWebSocket(dispatch, currentUser.id);
+      console.log('socket:', socket);
 
       return () => {
         closeWebSocket();
@@ -45,7 +48,7 @@ function App() {
         <Route path="/*" element={<MainRoutes />} />
         <Route path="/mentor/*" element={<MentorRoutes />} />
         <Route path="/admin/*" element={<AdminRoutes />} />
-        <Route path="/video-call/:callId" element={<VideoCall />} />
+        <Route path="/video-call/:callId" element={<VideoCallWrapper />} />
       </Routes>
     </Router>
   );

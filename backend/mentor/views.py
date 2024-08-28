@@ -20,7 +20,11 @@ def get_agora_token(request, appointment_id):
         # Generate a fresh token for each request
         token = generate_agora_token(str(appointment.video_call_id), 0)
         
-        return Response({'token': token})
+        return Response({
+            'token': token,
+            'user': appointment.user.id,
+            'mentor': appointment.mentor_user_id
+            })
     except Appointment.DoesNotExist:
         return Response({'error': 'Appointment not found'}, status=404)
     except Exception as e:
