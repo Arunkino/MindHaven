@@ -1,7 +1,13 @@
 import { toast } from 'react-toastify';
 import { addNotification } from './notifications/notificationSlice';
 import { addMessage, updateMessageStatus } from './user/chatSlice';
-import { setCallActive, setParticipantJoined, updateCallDuration, resetCallState } from './videoCall/videoCallSlice';
+import { 
+  setCallActive, 
+  setParticipantJoined, 
+  updateCallDuration, 
+  showCallSummary, 
+  resetCallState 
+} from './videoCall/videoCallSlice';
 
 let socket = null;
 let reconnectInterval = null;
@@ -76,12 +82,8 @@ const handleVideoCallUpdate = (data) => {
   }
 
   if (data.call_ended) {
-    dispatch(resetCallState());
-    toast.info(`Call ended. Duration: ${formatDuration(data.call_duration)}`);
-    // Redirect based on user role
-    const userRole = localStorage.getItem('userRole'); // Assuming you store user role in localStorage
-    const redirectPath = userRole === 'mentor' ? '/mentor/dashboard' : '/dashboard';
-    window.location.href = redirectPath;
+    console.log('Call ended');
+    dispatch(showCallSummary({ duration: data.call_duration }));
   }
 };
 const formatDuration = (seconds) => {

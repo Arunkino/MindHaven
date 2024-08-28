@@ -263,6 +263,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         appointment.call_end_time = timezone.now()
         appointment.user_joined = False
         appointment.mentor_joined = False
+        appointment.status = 'completed'
         appointment.save()
         logger.info(f"Call ended. Appointment updated: call_duration={appointment.call_duration}, call_end_time={appointment.call_end_time}")
 

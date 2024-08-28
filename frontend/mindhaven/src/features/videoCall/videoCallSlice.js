@@ -5,6 +5,8 @@ const initialState = {
   callStartTime: null,
   callDuration: 0,
   participantJoined: false,
+  showCallSummary: false,
+  finalCallDuration: 0,
 };
 
 const videoCallSlice = createSlice({
@@ -28,12 +30,23 @@ const videoCallSlice = createSlice({
     setParticipantJoined: (state, action) => {
       state.participantJoined = action.payload;
     },
+    showCallSummary: (state, action) => {
+      state.isCallActive = false;
+      state.showCallSummary = true;
+      state.finalCallDuration = action.payload.duration;
+    },
     resetCallState: (state) => {
       return initialState;
     },
   },
 });
 
-export const { setCallActive, updateCallDuration, setParticipantJoined, resetCallState } = videoCallSlice.actions;
+export const { 
+  setCallActive, 
+  updateCallDuration, 
+  setParticipantJoined, 
+  showCallSummary, 
+  resetCallState 
+} = videoCallSlice.actions;
 
 export default videoCallSlice.reducer;
